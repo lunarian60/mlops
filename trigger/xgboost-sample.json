@@ -1,0 +1,39 @@
+{
+  "comment": "xgboost mlops pipeline",
+  "owner": "Yudong Lee",
+  "project": "mlops-kubernetes-sample",
+  "data": {
+    "s3InputFileBucket": "mlops-kubernetes",
+    "s3OutputFileBucket": "mlops-kubernetes",
+    "s3TrainPrefix": "xgboost/abalone"
+  },
+  "train": {
+    "jobName": "xgboost",
+    "roleSageMarkerExecution": "arn:aws:iam::806174985048:role/service-role/AmazonSageMaker-ExecutionRole-20210208T161947",
+    "sageMakerContainerArn": "366743142698.dkr.ecr.ap-northeast-2.amazonaws.com/sagemaker-xgboost:1.3-1",
+    "sageMakerInstanceCount": 1,
+    "sageMakerInstanceSize": "ml.m5.2xlarge",
+    "sageMakerMaxRuntime": 108000,
+    "hyperparameter": {
+      "max_depth": "5",
+      "eta": "0.2",
+      "gamma": "4",
+      "min_child_weight": "6",
+      "subsample": "0.7",
+      "objective": "reg:linear",
+      "num_round": "50",
+      "verbosity": "2"
+    }
+  },
+  "evaluation": {
+    "desiredPrecision": 0.8,
+    "desiredRecall": 0.8
+  },
+  "deploy": {
+    "type": "endpoint",
+    "resourcePrefix": "xgbooste",
+    "sageMakerContainerArn": "366743142698.dkr.ecr.ap-northeast-2.amazonaws.com/sagemaker-xgboost:1.3-1",
+    "sageMakerInstanceCount": "1",
+    "sageMakerInstanceSize": "ml.m4.xlarge"
+  }
+}
