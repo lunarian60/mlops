@@ -18,11 +18,8 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends --reinstall 
 RUN ln -s /usr/bin/python3 /usr/bin/python
 RUN ln -s /usr/bin/pip3 /usr/bin/pip
 
-RUN pip install --upgrade pip \
-    && pip install scipy==1.2.2 awscli sagemaker sagemaker-containers 
+RUN pip install --upgrade pip && pip install awscli sagemaker sagemaker-containers 
     
-ENV PYTHONUNBUFFERED=TRUE
-ENV PYTHONDONTWRITEBYTECODE=TRUE
 ENV PATH="/opt/ml/code:${PATH}"
 
 COPY check_status.py /opt/ml/code/check_status.py

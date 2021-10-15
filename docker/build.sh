@@ -14,7 +14,7 @@ then
     exit 1
 fi
 
-chmod +x train.py
+chmod +x check_status.py
 
 docker build  -t ${image} .
 docker tag ${image} ${fullname}
