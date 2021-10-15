@@ -66,7 +66,7 @@
             "s3DataDistributionType": "FullyReplicated"
           }
         },
-        "contentType": "libsvm",
+        "contentType": "text/csv",
         "compressionType": "None"
       },
       {
@@ -78,7 +78,7 @@
             "s3DataDistributionType": "FullyReplicated"
           }
         },
-        "contentType": "libsvm",
+        "contentType": "text/csv",
         "compressionType": "None"
       }
     ],
