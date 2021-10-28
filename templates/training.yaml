@@ -1,0 +1,39 @@
+apiVersion: sagemaker.aws.amazon.com/v1
+kind: TrainingJob
+metadata:
+  name:
+spec:
+  hyperParameters:
+  algorithmSpecification:
+    trainingImage:
+    trainingInputMode: File
+  roleArn:
+  region:
+  outputDataConfig:
+    s3OutputPath:
+  resourceConfig:
+    instanceCount:
+    instanceType:
+    volumeSizeInGB: 10
+  stoppingCondition:
+    maxRuntimeInSeconds: 86400
+  inputDataConfig:
+    - channelName: train
+      dataSource:
+        s3DataSource:
+          s3DataType: S3Prefix
+          s3Uri: s3://mlops-kubernetes/sagemaker/data/boston-xgboost-LL/train.csv
+          s3DataDistributionType: FullyReplicated
+      contentType: text/csv
+      compressionType: None
+    - channelName: validation
+      dataSource:
+        s3DataSource:
+          s3DataType: S3Prefix
+          s3Uri: s3://mlops-kubernetes/sagemaker/data/boston-xgboost-LL/validation.csv
+          s3DataDistributionType: FullyReplicated
+      contentType: text/csv
+      compressionType: None
+  tags:
+    - key: tagKey
+      value: tagValue
