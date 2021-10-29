@@ -1,92 +1,39 @@
 {
-  "apiVersion": "sagemaker.aws.amazon.com/v1",
-  "kind": "TrainingJob",
-  "metadata": {
-    "name": "xgboost-abalone"
-  },
-  "spec": {
-    "hyperParameters": [
-      {
-        "name": "max_depth",
-        "value": "4"
-      },
-      {
-        "name": "eta",
-        "value": "0.2"
-      },
-      {
-        "name": "gamma",
-        "value": "4"
-      },
-      {
-        "name": "min_child_weight",
-        "value": "6"
-      },
-      {
-        "name": "subsample",
-        "value": "0.7"
-      },
-      {
-        "name": "objective",
-        "value": "reg:linear"
-      },
-      {
-        "name": "num_round",
-        "value": "50"
-      },
-      {
-        "name": "verbosity",
-        "value": "2"
-      }
-    ],
-    "algorithmSpecification": {
-      "trainingImage": "366743142698.dkr.ecr.ap-northeast-2.amazonaws.com/sagemaker-xgboost:1.3-1",
-      "trainingInputMode": "File"
-    },
-    "roleArn": {roleArn},
+  "comment": "xgboost mlops pipeline",
+  "owner": "Yudong Lee",
+  "project": "mlops-kubernetes-sample",
+  "train": {
+    "metadataName": "xgboost",
     "region": "ap-northeast-2",
-    "outputDataConfig": {
-      "s3OutputPath": "{outputPath}"
-    },
-    "resourceConfig": {
-      "instanceCount": 1,
-      "instanceType": "ml.m5.2xlarge",
-      "volumeSizeInGB": 5
-    },
-    "stoppingCondition": {
-      "maxRuntimeInSeconds": 3600
-    },
-    "inputDataConfig": [
-      {
-        "channelName": "train",
-        "dataSource": {
-          "s3DataSource": {
-            "s3DataType": "S3Prefix",
-            "s3Uri": "{trainSourceUri}",
-            "s3DataDistributionType": "FullyReplicated"
-          }
-        },
-        "contentType": "text/csv",
-        "compressionType": "None"
-      },
-      {
-        "channelName": "validation",
-        "dataSource": {
-          "s3DataSource": {
-            "s3DataType": "S3Prefix",
-            "s3Uri": "{validationUri}",
-            "s3DataDistributionType": "FullyReplicated"
-          }
-        },
-        "contentType": "text/csv",
-        "compressionType": "None"
-      }
-    ],
-    "tags": [
-      {
-        "key": "tagKey",
-        "value": "tagValue"
-      }
+    "roleArn": "arn:aws:iam::145081548823:role/service-role/AmazonSageMaker-ExecutionRole-20210831T134631",
+    "trainingImage": "366743142698.dkr.ecr.ap-northeast-2.amazonaws.com/sagemaker-xgboost:1.3-1",
+    "trainS3OutputPath": "s3://mlops-kubernetes/sagemaker/output/",
+    "instanceCount": 1,
+    "instanceSize": "ml.m5.2xlarge",
+    "maxRuntime": 108000,
+    "hyperparameter": [
+      {"name": "max_depth", "value":  5},
+      {"name": "eta", "value":  0.2},
+      {"name": "gamma", "value":  4},
+      {"name": "min_child_weight", "value":  6},
+      {"name": "subsample", "value":  0.8},
+      {"name": "objective", "value":  "reg:linear"},
+      {"name": "num_round", "value":  200},
+      {"name": "early_stopping_rounds", "value":  10}
     ]
+    ,
+    "trainS3Uri": "s3://mlops-kubernetes/sagemaker/data/boston-xgboost-LL/train.csv",
+    "validationS3Uril": "s3://mlops-kubernetes/sagemaker/data/boston-xgboost-LL/validation.csv"
+  },
+  "evaluation": {
+    "desiredPrecision": 0.8,
+    "desiredRecall": 0.8
+  },
+  "deploy": {
+    "type": "endpoint",
+    "resourcePrefix": "xgboost",
+    "sageMakerContainerArn": "366743142698.dkr.ecr.ap-northeast-2.amazonaws.com/sagemaker-xgboost:1.3-1",
+    "sageMakerInstanceCount": "1",
+    "sageMakerInstanceSize": "ml.m4.xlarge"
   }
 }
