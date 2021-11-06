@@ -1,0 +1,19 @@
+apiVersion: sagemaker.aws.amazon.com/v1
+kind: HostingDeployment
+metadata:
+  name: hosting-deployment
+spec:
+  region:
+  productionVariants:
+    - variantName: AllTraffic
+      modelName:
+      initialInstanceCount:
+      instanceType:
+      initialVariantWeight: 1
+  models:
+    - name:
+      executionRoleArn:
+      containers:
+        - containerHostname:
+          modelDataUrl:
+          image:
