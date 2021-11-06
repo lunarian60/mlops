@@ -24,7 +24,7 @@
     ,
     "trainS3Uri": "s3://mlops-kubernetes/sagemaker/data/boston-xgboost-LL/train.csv",
     "validationS3Uril": "s3://mlops-kubernetes/sagemaker/data/boston-xgboost-LL/validation.csv",
-    "outputModel": ""
+    "outputModel": "s3://mlops-kubernetes/sagemaker/output/"
   },
   "evaluation": {
     "desiredPrecision": 0.8,
