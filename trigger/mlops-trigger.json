@@ -23,7 +23,8 @@
     ]
     ,
     "trainS3Uri": "s3://mlops-kubernetes/sagemaker/data/boston-xgboost-LL/train.csv",
-    "validationS3Uril": "s3://mlops-kubernetes/sagemaker/data/boston-xgboost-LL/validation.csv"
+    "validationS3Uril": "s3://mlops-kubernetes/sagemaker/data/boston-xgboost-LL/validation.csv",
+    "outputModel": ""
   },
   "evaluation": {
     "desiredPrecision": 0.8,
@@ -31,7 +32,9 @@
   },
   "deploy": {
     "type": "endpoint",
+    "region": "ap-northeast-2",
     "resourcePrefix": "xgboost",
+    "roleArn": "arn:aws:iam::145081548823:role/service-role/AmazonSageMaker-ExecutionRole-20210831T134631",
     "sageMakerContainerArn": "366743142698.dkr.ecr.ap-northeast-2.amazonaws.com/sagemaker-xgboost:1.3-1",
     "sageMakerInstanceCount": "1",
     "sageMakerInstanceSize": "ml.m4.xlarge"
