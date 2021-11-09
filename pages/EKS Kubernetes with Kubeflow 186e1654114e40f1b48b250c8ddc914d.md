@@ -20,6 +20,6 @@
 
 [Assign IAM permissions](EKS%20Kubernetes%20with%20Kubeflow%20186e1654114e40f1b48b250c8ddc914d/Assign%20IAM%20permissions%20e91a4cf961a94df7a38dd5ab467ec456.md)
 
-[Install Kubeflow pipeline SDK](EKS%20Kubernetes%20with%20Kubeflow%20186e1654114e40f1b48b250c8ddc914d/Install%20Kubeflow%20pipeline%20SDK%20cedd23ca76054f5eacd72deb31c27175.md)
-
+<!-- (Optional) [Install Kubeflow pipeline SDK](EKS%20Kubernetes%20with%20Kubeflow%20186e1654114e40f1b48b250c8ddc914d/Install%20Kubeflow%20pipeline%20SDK%20cedd23ca76054f5eacd72deb31c27175.md)
+ -->
 [Kubeflow Pipeline](EKS%20Kubernetes%20with%20Kubeflow%20186e1654114e40f1b48b250c8ddc914d/Kubeflow%20Pipeline%20a67ca6ae35b745ed915e32de17f5e02c.md)
