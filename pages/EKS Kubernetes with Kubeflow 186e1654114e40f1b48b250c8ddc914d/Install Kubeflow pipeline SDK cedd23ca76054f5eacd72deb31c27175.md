@@ -127,8 +127,8 @@ metadata:
   namespace: kubeflow
 type: Opaque
 data:
-  AWS_ACCESS_KEY_ID: AKIA4KJJMSKFZ2A3X45K
-  AWS_SECRET_ACCESS_KEY: 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
+  AWS_ACCESS_KEY_ID: xxxxx
+  AWS_SECRET_ACCESS_KEY: xxxxx
 EOF
 ```
 
