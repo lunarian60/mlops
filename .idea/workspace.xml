@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85005585-cee9-4436-ae6e-a83cbdb4e3d7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/codes/kmeans/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/codes/kmeans/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
